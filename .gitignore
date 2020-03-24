@@ -9,7 +9,7 @@ db.sqlite3-journal
 media
 
 ### VisualStudioCode ###
-.vscode/*
+.vscode/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -18,3 +18,6 @@ media
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
+
+### Python venv
+drf-env/
