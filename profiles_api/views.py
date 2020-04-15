@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from profiles_api import serializers
 from rest_framework import viewsets
+from profiles_api import models
 
 
 class HelloApiView(APIView):
@@ -90,3 +91,12 @@ class HelloViewset(viewsets.ViewSet):
     def destroy(self, request, pk=None):
         """Hanlde removing an object by its ID"""
         return Response({'http_method': 'DELETE'})
+
+
+class UserProfileViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating profiles"""
+    serializer_class = serializers.UserProfileSerializer
+    queryset = models.UserProfile.objects.all()
+    # DRF ModelViewSet knows the standard functions that we would want to perform on a
+    # model viewset (create, list, etc.). DRF takes care of all of this just by assigning
+    # serializer_class and queryset
