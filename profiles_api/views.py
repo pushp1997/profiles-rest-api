@@ -6,6 +6,7 @@ from rest_framework import viewsets
 from profiles_api import models
 from rest_framework.authentication import TokenAuthentication
 from profiles_api import permissions
+from rest_framework import filters
 
 
 class HelloApiView(APIView):
@@ -103,4 +104,6 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     # model viewset (create, list, etc.). DRF takes care of all of this just by assigning
     # serializer_class and queryset
     authentication_classes = (TokenAuthentication, )
-    permission_classes = (permissions.UpdateOwnProfile)
+    permission_classes = (permissions.UpdateOwnProfile, )
+    filter_backends = (filters.SearchFilter, )
+    search_fields = ('name', 'email', )
